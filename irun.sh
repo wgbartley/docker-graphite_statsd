@@ -1,7 +1,8 @@
 #!/bin/bash
 
-sudo docker run -t -i --name=Graphite \
-	    -p 8080:80 -p 2003:2003 -p 8125:8125/udp \
+sudo docker run -t -i --name=Graphite -h graphite \
+	    -v $(pwd)/data:/storage \
+	    -p 8080:8000 -p 2003:2003 -p 8125:8125/udp \
 	    odroid_u3/graphite_statsd /bin/bash
 
 	    #-v $(pwd)/data/opt/graphite/:/opt/graphite/ \
